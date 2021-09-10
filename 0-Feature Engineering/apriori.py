@@ -1,7 +1,3 @@
-
-"""
-"""
-
 '''
     1、发现频繁项集
 '''
@@ -30,6 +26,7 @@ def create_Ck(Lk, k):
             L2 = list(list_Lk[j])
             L1.sort()
             L2.sort()
+            # 前k-2项相同时，将两个集合合并
             if L1[0:k-2] == L2[0:k-2]:
                 Ck_item = list_Lk[i] | list_Lk[j]
                 if is_apriori(Ck_item, Lk):
@@ -49,7 +46,6 @@ def is_apriori(Ck_item, Lk):
         if sub_Ck not in Lk:
             return False
     return True
-
 
 def generate_Lk_by_Ck(Ck, minSupport=0.5):
     Lk = set()
@@ -112,6 +108,7 @@ def generate_rules(L, minSupport):
                         big_rule_list.append(big_rule)
             sub_set_list.append(freq_set)
     return big_rule_list
+
 
 
 supportData = {}
